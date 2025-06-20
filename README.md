@@ -1,16 +1,10 @@
-# ui_style
+# UI-Style
 
-A new Flutter project.
+This UI package is created for use in my personal Flutter projects.  
+It contains reusable UI components to ensure consistency and simplify development across multiple apps.
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Flutter application.
+You can import and use these UI components in your own Flutter projects to maintain a consistent design system.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
