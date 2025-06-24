@@ -74,7 +74,7 @@ class UButtonWidget extends StatelessWidget {
         disabledBackgroundColor: Theme.of(context).colorScheme.secondary,
         disabledForegroundColor: Theme.of(context).colorScheme.onSecondary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(
+          borderRadius: BorderRadius.circular(
             UniversalDimensions.radiusBtn,
           ),
         ),
@@ -94,7 +94,7 @@ class UButtonWidget extends StatelessWidget {
                 ? Theme.of(context).colorScheme.primary
                 : Theme.of(context).colorScheme.secondary,
           ),
-          borderRadius: BorderRadiusGeometry.circular(
+          borderRadius: BorderRadius.circular(
             UniversalDimensions.radiusBtn,
           ),
         ),
@@ -109,7 +109,7 @@ class UButtonWidget extends StatelessWidget {
         disabledBackgroundColor: Colors.transparent,
         disabledForegroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(
+          borderRadius: BorderRadius.circular(
             UniversalDimensions.radiusBtn,
           ),
         ),
