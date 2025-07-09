@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_style/utils/app_colors.dart';
 
 class AppTheme {
@@ -6,13 +7,14 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Kanit',
-    colorScheme: const ColorScheme(
+    textTheme: GoogleFonts.kanitTextTheme(),
+    colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.darkBrown,
       onPrimary: AppColors.offWhite,
       secondary: AppColors.taupe,
       onSecondary: AppColors.offWhite,
+      shadow: Colors.black.withAlpha(80),
       error: AppColors.error,
       onError: AppColors.offWhite,
       surface: Colors.white,
@@ -27,17 +29,18 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    fontFamily: 'Kanit',
-    colorScheme: const ColorScheme(
+    textTheme: GoogleFonts.kanitTextTheme(),
+    colorScheme: ColorScheme(
       brightness: Brightness.dark,
-      primary: AppColors.lightBeige,
+      primary: AppColors.offWhite,
       onPrimary: AppColors.darkBrown,
-      secondary: AppColors.taupe,
-      onSecondary: AppColors.offWhite,
+      secondary: AppColors.offWhite,
+      onSecondary: AppColors.taupe,
+      shadow: Colors.black.withAlpha(80),
       error: AppColors.error,
       onError: AppColors.offWhite,
-      surface: AppColors.grayishBrown,
-      onSurface: AppColors.offWhite,
+      surface: AppColors.darkBrown,
+      onSurface: Colors.white,
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.grayishBrown,
