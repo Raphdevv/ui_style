@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
+/// A background wrapper widget that provides a styled layout
+/// with a top padding (for safe area) and a rounded surface container.
+///
+/// This widget is typically used as a base layout for screens,
+/// ensuring consistent background colors and rounded top corners.
 class UBackgroundWidget extends StatelessWidget {
+  /// The child widget to be displayed inside the main content area.
   final Widget child;
+
+  /// Creates a [UBackgroundWidget].
+  ///
+  /// The [child] is required and will be placed inside a surface-colored
+  /// container with rounded top corners.
   const UBackgroundWidget({super.key, required this.child});
 
   @override
