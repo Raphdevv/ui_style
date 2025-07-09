@@ -8,12 +8,13 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     textTheme: GoogleFonts.kanitTextTheme(),
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.darkBrown,
       onPrimary: AppColors.offWhite,
       secondary: AppColors.taupe,
       onSecondary: AppColors.offWhite,
+      shadow: Colors.black.withAlpha(80),
       error: AppColors.error,
       onError: AppColors.offWhite,
       surface: Colors.white,
@@ -29,12 +30,13 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.dark,
     textTheme: GoogleFonts.kanitTextTheme(),
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.offWhite,
       onPrimary: AppColors.darkBrown,
       secondary: AppColors.offWhite,
       onSecondary: AppColors.taupe,
+      shadow: Colors.black.withAlpha(80),
       error: AppColors.error,
       onError: AppColors.offWhite,
       surface: AppColors.darkBrown,

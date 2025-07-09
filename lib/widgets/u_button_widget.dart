@@ -4,10 +4,11 @@ import 'package:ui_style/utils/app_enums.dart';
 
 class UButtonWidget extends StatelessWidget {
   final String text;
-  final IconData? prefixIcon;
-  final IconData? tailIcon;
   final UButtonStyle style;
   final UButtonSize size;
+  final double? radius;
+  final IconData? tailIcon;
+  final IconData? prefixIcon;
   final double? height;
   final double? width;
   final Function()? onPressed;
@@ -22,6 +23,7 @@ class UButtonWidget extends StatelessWidget {
     this.onPressed,
     this.height,
     this.width,
+    this.radius,
   });
 
   // fontSize text flex with attribute size
@@ -75,7 +77,7 @@ class UButtonWidget extends StatelessWidget {
         disabledForegroundColor: Theme.of(context).colorScheme.onSecondary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            UniversalDimensions.radiusBtn,
+            radius ?? UniversalDimensions.radiusBtn,
           ),
         ),
       );
@@ -95,7 +97,7 @@ class UButtonWidget extends StatelessWidget {
                 : Theme.of(context).colorScheme.secondary,
           ),
           borderRadius: BorderRadius.circular(
-            UniversalDimensions.radiusBtn,
+            radius ?? UniversalDimensions.radiusBtn,
           ),
         ),
       );
@@ -110,7 +112,7 @@ class UButtonWidget extends StatelessWidget {
         disabledForegroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            UniversalDimensions.radiusBtn,
+            radius ?? UniversalDimensions.radiusBtn,
           ),
         ),
       );
