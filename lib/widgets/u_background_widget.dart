@@ -18,9 +18,11 @@ class UBackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeColor = Theme.of(context).colorScheme;
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      height: double.infinity,
-      width: double.infinity,
+      height: height,
+      width: width,
       color: themeColor.onSurface,
       child: Column(
         children: [

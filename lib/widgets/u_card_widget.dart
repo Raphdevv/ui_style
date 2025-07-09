@@ -1,131 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:ui_style/utils/app_dimensions.dart';
 
 import '../utils/utils_export.dart';
-import 'widgets_export.dart';
 
-/// A customizable card widget used for displaying content
-/// such as title, subtitle, and optional actions.
-///
-/// This widget supports different types via [UCardType]:
-/// - [UCardType.none] (default): A standard card with optional trailing arrow.
-/// - [UCardType.tapCard]: Makes the entire card tappable.
-/// - [UCardType.titleWithButton]: Displays a title with a trailing action button.
+/// A customizable card widget that can contain various child widgets.
+/// This widget provides a surface with rounded corners and a shadow effect,
+/// making it suitable for displaying content such as text, images, or other widgets.
+/// The card can be used in various layouts and
 class UCardWidget extends StatelessWidget {
-  /// The type of the card that defines its layout and behavior.
-  ///
-  /// See [UCardType] for available options.
-  final UCardType type;
-
-  /// Called when the card is tapped. Only works if [type] is [UCardType.tapCard].
-  final Function()? onTap;
-
-  /// The main title text displayed in the card.
-  final String? textTitle;
-
-  /// The text for the action button, shown only in [UCardType.titleWithButton].
-  final String? buttonText;
-
-  /// The supporting subtitle text displayed below the title.
-  final String? textSupporting;
-
-  /// Called when the title button is pressed.
-  ///
-  /// Only used in [UCardType.titleWithButton].
-  final Function()? onPressedButtonTitle;
-
-  /// Creates a [UCardWidget].
-  ///
-  /// You can customize the card's [type], [textTitle], [textSupporting],
-  /// action button with [buttonText], and tap behavior with [onTap] or [onPressedButtonTitle].
-  const UCardWidget({
-    super.key,
-    this.onTap,
-    this.textTitle,
-    this.buttonText,
-    this.textSupporting,
-    this.onPressedButtonTitle,
-    this.type = UCardType.none,
-  });
-
-  Widget _titleWidget(BuildContext context) {
-    if (type == UCardType.titleWithButton) {
-      return Row(
-        children: [
-          Expanded(
-            child: Text(
-              textTitle ?? "",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: AppDimensionsFontSize.l,
-              ),
-            ),
-          ),
-          UButtonWidget(
-            text: buttonText ?? "",
-            style: UButtonStyle.fill,
-            size: UButtonSize.s,
-            radius: AppDimensionsRadius.small,
-            onPressed: onPressedButtonTitle,
-          ),
-        ],
-      );
-    } else {
-      return textTitle != null
-          ? Text(
-              textTitle!,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: AppDimensionsFontSize.l,
-              ),
-            )
-          : SizedBox.shrink();
-    }
-  }
+  /// A customizable card widget that can contain various child widgets.
+  final List<Widget>? children;
+  final Color? color;
+  const UCardWidget({super.key, this.children, this.color});
 
   @override
   Widget build(BuildContext context) {
     final themeColor = Theme.of(context).colorScheme;
-    return Card(
-      color: themeColor.surface,
-      elevation: 10,
-      shadowColor: themeColor.shadow,
-      shape: RoundedRectangleBorder(
+    final size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width,
+      decoration: BoxDecoration(
+        color: color ?? themeColor.surface,
         borderRadius: BorderRadius.circular(
           AppDimensionsRadius.largeIncreased,
         ),
-      ),
-      child: ListTile(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            AppDimensionsRadius.largeIncreased,
+        boxShadow: [
+          BoxShadow(
+            color: themeColor.shadow.withAlpha(40),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
           ),
-        ),
-        title: _titleWidget(context),
-        subtitle: textSupporting != null
-            ? Text(
-                textSupporting!,
-                style: TextStyle(
-                  color: themeColor.onSurface.withAlpha(150),
-                  fontSize: AppDimensionsFontSize.m,
-                ),
-              )
-            : SizedBox.shrink(),
-        trailing: type == UCardType.titleWithButton
-            ? null
-            : type == UCardType.tapCard
-                ? null
-                : InkWell(
-                    onTap: onTap,
-                    child: IconButton(
-                      onPressed: onTap,
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: themeColor.onSurface,
-                      ),
+        ],
+      ),
+      child: Column(
+        children: children ??
+            [
+              SizedBox(
+                height: MediaQuery.of(context).padding.top,
+                child: Center(
+                  child: Text(
+                    'Card Content Here',
+                    style: TextStyle(
+                      color: themeColor.onSurface,
+                      fontSize: AppDimensionsFontSize.m.responsive(context),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-        onTap: type == UCardType.tapCard ? onTap : null,
+                ),
+              ),
+            ],
       ),
     );
   }

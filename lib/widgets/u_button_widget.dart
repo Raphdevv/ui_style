@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_style/utils/app_dimensions.dart';
-import 'package:ui_style/utils/app_enums.dart';
+import 'package:ui_style/utils/utils_export.dart';
 
 /// A customizable button widget supporting different sizes, styles,
 /// optional prefix/tail icons, and radius settings.
@@ -56,15 +55,15 @@ class UButtonWidget extends StatelessWidget {
     this.radius,
   });
   // fontSize text flex with attribute size
-  double get fontSize {
+  double fontSize(BuildContext context) {
     if (size == UButtonSize.s) {
-      return AppDimensionsFontSize.s;
+      return AppDimensionsFontSize.s.responsive(context);
     } else if (size == UButtonSize.m) {
-      return AppDimensionsFontSize.m;
+      return AppDimensionsFontSize.m.responsive(context);
     } else if (size == UButtonSize.l) {
-      return AppDimensionsFontSize.l;
+      return AppDimensionsFontSize.l.responsive(context);
     } else {
-      return AppDimensionsFontSize.xl;
+      return AppDimensionsFontSize.xl.responsive(context);
     }
   }
 
@@ -86,13 +85,13 @@ class UButtonWidget extends StatelessWidget {
   // height button flex with attribute size
   Size get sizeHeight {
     if (size == UButtonSize.s) {
-      return AppDimensionsSize.s;
+      return AppDimensionsSize.s.value;
     } else if (size == UButtonSize.m) {
-      return AppDimensionsSize.m;
+      return AppDimensionsSize.m.value;
     } else if (size == UButtonSize.l) {
-      return AppDimensionsSize.l;
+      return AppDimensionsSize.l.value;
     } else {
-      return AppDimensionsSize.xl;
+      return AppDimensionsSize.xl.value;
     }
   }
 
@@ -173,7 +172,7 @@ class UButtonWidget extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: textColor(context),
-                  fontSize: fontSize,
+                  fontSize: fontSize(context),
                 ),
               ),
             ),
