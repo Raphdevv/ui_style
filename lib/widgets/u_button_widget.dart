@@ -2,17 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:ui_style/utils/app_dimensions.dart';
 import 'package:ui_style/utils/app_enums.dart';
 
+/// A customizable button widget supporting different sizes, styles,
+/// optional prefix/tail icons, and radius settings.
+///
+/// The button adapts its appearance based on the provided [UButtonStyle]
+/// and [UButtonSize] values.
 class UButtonWidget extends StatelessWidget {
+  /// The text displayed inside the button.
   final String text;
+
+  /// The visual style of the button.
+  ///
+  /// Use [UButtonStyle.fill], [UButtonStyle.border], or [UButtonStyle.none].
   final UButtonStyle style;
+
+  /// The size of the button, affecting its height and text size.
+  ///
+  /// Use [UButtonSize.s], [UButtonSize.m], [UButtonSize.l], or [UButtonSize.xl].
   final UButtonSize size;
+
+  /// The corner radius of the button. If null, a default radius is used.
   final double? radius;
+
+  /// An optional icon displayed at the end (right side) of the button.
   final IconData? tailIcon;
+
+  /// An optional icon displayed at the beginning (left side) of the button.
   final IconData? prefixIcon;
+
+  /// Custom height of the button. If null, determined by [size].
   final double? height;
+
+  /// Custom width of the button. If null, calculated based on [size].
   final double? width;
+
+  /// The callback function triggered when the button is pressed.
   final Function()? onPressed;
 
+  /// Creates a [UButtonWidget].
+  ///
+  /// Customize it using [text], [style], [size], [onPressed], [prefixIcon],
+  /// [tailIcon], [radius], [height], and [width].
   const UButtonWidget({
     super.key,
     required this.text,
@@ -25,7 +55,6 @@ class UButtonWidget extends StatelessWidget {
     this.width,
     this.radius,
   });
-
   // fontSize text flex with attribute size
   double get fontSize {
     if (size == UButtonSize.s) {
